@@ -1,17 +1,16 @@
 <!doctype html>
 <html>
     <head>
-        <title>{{ title }} - Microblog</title>
+        <title>{{ title }} - Todo List</title>
     </head>
     <body>
-        <h1>Hello, {{ user.username }}!</h1>
+        <h1>Stupid To-do List</h1>
 
         <br>
 
         <form action="/add" method="post">
         	<div>
-        		<label for="title">Visitor Log</label>
-        		<input type="text" name="visitor" placeholder="Enter Name">
+        		<input type="text" name="todo" placeholder="To Do Item Text">
         		<button type="submit">Add</button>
 
         	</div>

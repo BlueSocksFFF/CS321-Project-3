@@ -2,13 +2,11 @@ from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
-visitors = []
-
+todo_list = []
 
 @app.route("/")
 def index():
-	user = {'username' : 'Naser' }
-	return render_template("base.html", title="home", user=user)
+	return render_template("base.html", title="home")
 
 @app.route("/about")
 def about():
@@ -16,9 +14,9 @@ def about():
 
 @app.route("/add", methods=["POST"])
 def add():
-	visitor = request.form.get("visitor")
-	visitors.append(visitor)
-	print(visitors[-1])
+	todo_item = request.form.get("todo")
+	todo_list.append(todo_item)
+	print(todo_list[-1])
 
 	return redirect(url_for("index"))
 
