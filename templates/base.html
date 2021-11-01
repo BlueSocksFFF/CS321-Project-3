@@ -16,11 +16,12 @@
         	</div>
         </form>
 
-        <ul>
+        
         {% for item in list %}
-            <li>{{ item }}</li>
+            <p>{{ item }}</p>
+            <a href="/remove/{{item}}">remove</a>
         {% endfor %}
-        </ul>
+        
 
     </body>
 </html>

@@ -16,10 +16,14 @@ def about():
 def add():
 	todo_item = request.form.get("todo")
 	todo_list.append(todo_item)
-	print(todo_list[-1])
 
 	return redirect(url_for("index"))
+@app.route("/remove<string:item>")
+def remove(item):
+	todo_list.remove(item)
+	return redirect(url_for("index"))
 
+@app.route("/add",methods=[""])
 
 if __name__ == "__main__":
 	app.run(debug=True) 
