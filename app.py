@@ -6,7 +6,7 @@ todo_list = []
 
 @app.route("/")
 def index():
-	return render_template("base.html", title="home", list="todo_list")
+	return render_template("base.html", title="home", list=todo_list)
 
 @app.route("/about")
 def about():
