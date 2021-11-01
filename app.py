@@ -6,11 +6,7 @@ todo_list = []
 
 @app.route("/")
 def index():
-	return render_template("base.html", title="home")
-
-@app.route("/about")
-def about():
-	return "About us: Naser and the cool kids from CS321"
+	return render_template("base.html", title="home", list="todo_list")
 
 @app.route("/add", methods=["POST"])
 def add():
