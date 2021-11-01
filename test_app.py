@@ -1,6 +1,5 @@
-from app import index
-import pytest
+from app import about
 
-def test_index():
-    
-    assert index() == "hello, World!"
+
+def test_about():
+    assert about() == "About us: Naser and the cool kids from CS321"
