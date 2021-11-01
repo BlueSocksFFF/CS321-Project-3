@@ -8,6 +8,10 @@ todo_list = []
 def index():
 	return render_template("base.html", title="home", list="todo_list")
 
+@app.route("/about")
+def about():
+	return "A todo list created by Diane and Hoang"
+
 @app.route("/add", methods=["POST"])
 def add():
 	todo_item = request.form.get("todo")
