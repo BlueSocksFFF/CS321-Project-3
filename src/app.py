@@ -32,9 +32,6 @@ def update_item(item_id, text, done):
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
-    
-
-
 
 # app
 @app.route("/", methods = ["POST", "GET"])
@@ -43,15 +40,10 @@ def view_index():
         create_item(request.form['text'])
     return render_template("base.html", items = read_items())
 
-'''
-@app.route("/")
-def index():
-	return render_template("base.html", items = read_items())
-'''
-
 @app.route("/about")
 def about():
     return("TODO by Diane and Hoang")
 
 if __name__ == "__main__":
-	app.run(debug=True)
+    db.create_all()
+    app.run(debug=True)
