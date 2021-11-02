@@ -1,34 +1,19 @@
 <!doctype html>
 <html>
-    <head>
-        <title>{{ title }} - Todo List</title>
-    </head>
+<head>
+    <title>Home: TODO by Diane and Hoang</title>
+</head>
     <body>
-        <h1>To-do List</h1>
-
-        <br>
-
-        <form action="/add" method="post">
-        	<div>
-        		<input type="text" name="todo" placeholder="To Do Item Text">
-        		<button type="submit">Add</button>
-
-        	</div>
+        <h1>Happy TODO</h1>
+        <form method = "POST" action = "/">
+            <input type="text" name="text" placeholder="Add a new TODO item">
+            <button type="submit" value="update">Add</button>
         </form>
-
-        <h2> To-do items </h2>
-        <ul>
-        {% for item in todo_list %}
-            <li>{{ item }} <a href="/remove/{{item}}">remove</a> <a href="/complete/{{item}}">complete</a></li>
+        <h2>List</h2>
+        {% for item in items %}
+            <p>
+                <input type="text" title="{{item.dateTime}}" value="{{item.text}}" name="text">
+            </p>
         {% endfor %}
-        </ul>
-        
-        <h2> Completed items </h2>
-        <ul>
-        {% for item in accomplished_list %}
-            <li>{{ item }}</li>
-        {% endfor %}
-        </ul>
-
     </body>
 </html>
