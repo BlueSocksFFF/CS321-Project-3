@@ -2,3 +2,4 @@ pytest
 Flask
 flake8
 gunicorn
+flask_sqlalchemy
