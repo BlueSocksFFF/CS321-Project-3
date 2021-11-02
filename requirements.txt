@@ -4,3 +4,4 @@ flake8
 gunicorn
 flask_sqlalchemy
 datetime
+requests
