@@ -7,6 +7,6 @@ def test_about():
     
     assert about() == "TODO by Diane and Hoang"
     
-    clinet = app.test_client()
+    client = app.test_client()
     response = client.get("/about")
     assert response.status_code == 200 #success
