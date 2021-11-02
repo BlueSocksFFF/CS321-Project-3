@@ -20,12 +20,12 @@ def add():
 
 	return redirect(url_for("index"))
 
-@app.route("/remove<string:item>")
+@app.route("/remove/<string:item>")
 def remove(item):
 	todo_list.remove(item)
 	return redirect(url_for("index"))
 
-@app.route("/complete<string:item>")
+@app.route("/complete/<string:item>")
 def complete(item):
     accomplished_list.append(item)
     todo_list.remove(item)
