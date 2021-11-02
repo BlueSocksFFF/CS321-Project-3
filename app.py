@@ -3,10 +3,11 @@ from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)
 
 todo_list = []
+accomplished_list = []
 
 @app.route("/")
 def index():
-	return render_template("base.html", title="home", list=todo_list)
+	return render_template("base.html", title="home", todo_list=todo_list)
 
 @app.route("/about")
 def about():
@@ -18,11 +19,11 @@ def add():
 	todo_list.append(todo_item)
 
 	return redirect(url_for("index"))
+
 @app.route("/remove<string:item>")
 def remove(item):
 	todo_list.remove(item)
 	return redirect(url_for("index"))
-
 
 if __name__ == "__main__":
 	app.run(debug=True) 
