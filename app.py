@@ -41,5 +41,9 @@ def view_index():
         create_item(request.form['text'])
     return render_template("base.html", items = read_items())
 
+@app.about("/about")
+def about():
+    return("TODO by Diane and Hoang")
+
 if __name__ == "__main__":
 	app.run(debug=True)
