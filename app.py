@@ -7,7 +7,7 @@ accomplished_list = []
 
 @app.route("/")
 def index():
-	return render_template("base.html", title="home", todo_list=todo_list)
+	return render_template("base.html", title="home", todo_list=todo_list, accomplished_list = accomplished_list)
 
 @app.route("/about")
 def about():
@@ -32,4 +32,4 @@ def complete(item):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-	app.run(debug=True) 
+	app.run(debug=True)

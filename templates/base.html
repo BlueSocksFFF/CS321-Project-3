@@ -16,12 +16,19 @@
         	</div>
         </form>
 
+        <h2> To-do items </h2>
         <ul>
         {% for item in todo_list %}
             <li>{{ item }} <a href="/remove/{{item}}">remove</a> <a href="/complete/{{item}}">complete</a></li>
         {% endfor %}
         </ul>
         
+        <h2> Completed items </h2>
+        <ul>
+        {% for item in accomplished_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
 
     </body>
 </html>
