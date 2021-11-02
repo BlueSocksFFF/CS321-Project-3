@@ -18,7 +18,7 @@
 
         <ul>
         {% for item in todo_list %}
-            <li>{{ item }} <a href="/remove/{{item}}">remove</a> </li>
+            <li>{{ item }} <a href="/remove/{{item}}">remove</a> <a href="/complete/{{item}}">complete</a></li>
         {% endfor %}
         </ul>
         
