@@ -4,7 +4,7 @@
         <title>{{ title }} - Todo List</title>
     </head>
     <body>
-        <h1>Stupid To-do List</h1>
+        <h1>To-do List</h1>
 
         <br>
 
@@ -17,7 +17,7 @@
         </form>
 
         <ul>
-        {% for item in list %}
+        {% for item in todo_list %}
             <li>{{ item }} <a href="/remove/{{item}}">remove</a> </li>
         {% endfor %}
         </ul>
