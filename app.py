@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 
 app = Flask(__name__)
+project_dir = os.path.dirname(os.path.abspath(__file__))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "todo.db"))
+app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
 
 # class and methods
@@ -43,6 +47,15 @@ def view_index():
 @app.route("/about")
 def about():
     return("TODO by Diane and Hoang")
+
+# edit and delete
+@app.route("/edit/<item_id>", methods = ["POST", "GET"])
+def edit_note(item_id):
+    if request.method == "POST":
+        update_item(item_id, text=request.form['text'], done=request.form['done'])
+    elif request.method == "GET":
+        delete_item(item_id)
+    return redirect("/", code=302)
 
 if __name__ == "__main__":
     db.create_all()
