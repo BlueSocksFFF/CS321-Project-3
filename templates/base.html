@@ -36,7 +36,7 @@
             </form>
         <!--Todo Table-->
 
-        <h3 class="display-3">List</h3>
+        <h3 class="display-3">Not done</h3>
         {% for item in items %}
             <p>
                 <form method="POST" action="edit/{{item.id}}">
@@ -50,10 +50,11 @@
                         </div>
                         
                         
-                        <input type="text" title="{{item.dateTime}}" value="{{item.text}}" name="text" class="form-control">
+                        <!--<input type="text" title="{{item.dateTime}}" value="{{item.text}}" name=`"text" class="form-control">?-->
 
-                        <div class="input-group-append" id="button-addon2">
+                        <div class="input-group-append" id="button-addon4">
                             <button class="btn btn-outline-secondary" type="submit" value="update">Update</button>
+                            
                         </div>
                     </div>
                 </form>
