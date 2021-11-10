@@ -55,7 +55,7 @@ def view_index():
 def about():
     return("TODO by Diane and Hoang")
 
-# edit and delete
+# edit 
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_note(item_id):
     if request.method == "POST":
