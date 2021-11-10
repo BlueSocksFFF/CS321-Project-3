@@ -55,8 +55,7 @@ def about():
 # edit 
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_note(item_id):
-    if request.method == "POST":
-        update_item(item_id, text=request.form['text'], done=request.form['done'])
+    update_item(item_id, text=request.form['text'], done=request.form['done'])
 
     #elif request.method == "GET":
     #    delete_item(item_id)
@@ -65,8 +64,7 @@ def edit_note(item_id):
 # delete 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
 def edit_note(item_id):
-    if request.method == "GET":
-       delete_item(item_id)
+    delete_item(item_id)
     return redirect("/", code=302)
 
 @app.route("/priority/<item_id>",methods=["POST","GET"])
