@@ -24,13 +24,14 @@
         document.getElementById("datetime").innerHTML = dt.toLocaleString();
         </script>
     <div class="container">
-        <h2 class="display-2"> TODO - better move yo ass as this is a capitalist society </h2>
+        <h2 class="display-2"> TODO </h2>
+        <h5 class="display-5"> - better move yo ass as this is a capitalist society </h5>
         <h3 class="display-3"> Add new</h3>
             <form class="form-inline" method="POST" action="/">
                 <div class="form-group">
                     <div class="input-group">
                         <input type="text" name="text" class="form-control" placeholder="Add a new TODO item">
-                        <select class="selectpicker form-control" name="priority">
+                        <select class="form-select" name="priority">
                             <option value="aHIGH">High</option>
                             <option value="bMEDIAN">Median</option>
                             <option value="cLOW">Low</option>
@@ -46,33 +47,32 @@
         <h3 class="display-3">Not done</h3>
         {% for item in items %}
             <p>
-                <form method="POST" action="edit/{{item.id}}">
-                    <div class="input-group mb-2"> 
-
-
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="hidden" name="done" value="off" placeholder="{{item.dateTime}}" >
-                                <input type="checkbox" onclick="redicrect('/edit/{{item.id}}')" data-target="/edit/{{item.id}}" name="done">
+                <div class="input-group"> 
+                    <form method="POST" action="edit/{{item.id}}">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="hidden" name="done" value="off" placeholder="{{item.dateTime}}" >
+                                    <input type="checkbox" onclick="redicrect('/edit/{{item.id}}')" data-target="/edit/{{item.id}}" name="done">
+                                </div>
                             </div>
+                            <input type="text" class="form-control" title="{{item.dateTime}}" value="{{item.text}}" name="text">
                         </div>
-                        
-                        
-                        <input type="text" title="{{item.dateTime}}" value="{{item.text}}" name="text" class="form-control">
-
-                        <div class="input-group-append" id="button-addon4">
-                            <button class="btn btn-outline-secondary" type="submit" value="update">Update</button>
-                            <button class="btn btn-outline-secondary" type="button" href="/delete/{{item.id}}" value="update">Remove</button>
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Priority</button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">High </a>
-                              <a class="dropdown-item" href="#">Medium </a>
-                              <a class="dropdown-item" href="#">Low</a>
-                              
-                            </div>
+                    </form>
+                    <form method="POST" action="delete/{{item.id}}">
+                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                    </form>
+                    <form method="POST" action="priority/{{item.id}}">
+                        <select class="selectpicker form-control" name="priority">
+                            <option value="aHIGH">High</option>
+                            <option value="bMEDIAN">Median</option>
+                            <option value="cLOW">Low</option>
+                        </select>
+                        <div class="input-group-appen" id="button-addon4">
+                            <button class="btn btn-outline-secondary" type="submit" value="update" name="text">Update</button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </p>
         {% endfor %}
     </div>
