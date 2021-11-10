@@ -52,17 +52,24 @@ def view_index():
 def about():
     return("TODO by Diane and Hoang")
 
-# edit and delete
+# edit 
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_note(item_id):
     if request.method == "POST":
         update_item(item_id, text=request.form['text'], done=request.form['done'])
-    elif request.method == "GET":
-        delete_item(item_id)
+
+    #elif request.method == "GET":
+    #    delete_item(item_id)
     return redirect("/", code=302)
 
+# delete 
+@app.route("/delete/<item_id>", methods = ["POST", "GET"])
+def edit_note(item_id):
+    if request.method == "GET":
+       delete_item(item_id)
+    return redirect("/", code=302)
 
-@app.route("/edit/<item_id>",methods=["POST","GET"])
+@app.route("/priority/<item_id>",methods=["POST","GET"])
 def edit_priority(item_id):
     if request.method=="POST":
         update_item_priority(item_id,request.form['priority'])
