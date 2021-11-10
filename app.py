@@ -29,7 +29,7 @@ def read_items():
 def update_item(item_id, text, done):
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
-		"done": True if done == "on" else False #checkbox
+		#"done": True if done == "on" else False #checkbox
 	})
     db.session.commit()
 def update_item_priority(item_id,priority):
