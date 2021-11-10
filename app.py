@@ -55,7 +55,7 @@ def about():
 # edit 
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_note(item_id):
-    update_item(item_id, text=request.form['text'], done=request.form['done'])
+    update_item(item_id, text=request.form['text'])
 
     #elif request.method == "GET":
     #    delete_item(item_id)
