@@ -63,7 +63,7 @@ def edit_note(item_id):
 
 # delete 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
-def edit_note(item_id):
+def delete(item_id):
     delete_item(item_id)
     return redirect("/", code=302)
 
