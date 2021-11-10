@@ -11,6 +11,8 @@
     </script>
 </head>
     <body>
+    <p>Current Date and Time is <span id='date-time'></span>.</p>
+
     <div class="container">
         <h2 class="display-2"> Happy TODO</h2>
         <h3 class="display-3"> Add new</h3>
@@ -22,7 +24,8 @@
                         </div>
                 </div>
             </form>
-        
+        <!--Todo Table-->
+
         <h3 class="display-3">List</h3>
         {% for item in items %}
             <p>
@@ -35,7 +38,8 @@
                                 <input type="checkbox" onclick="redicrect('/edit/{{item.id}}')" data-target="/edit/{{item.id}}" name="done">
                             </div>
                         </div>
-                    
+                        
+                        
                         <input type="text" title="{{item.dateTime}}" value="{{item.text}}" name="text" class="form-control">
 
                         <div class="input-group-append" id="button-addon2">
