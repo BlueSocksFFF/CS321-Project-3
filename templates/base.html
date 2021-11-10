@@ -11,8 +11,12 @@
     </script>
 </head>
     <body>
-    <p>Current Date and Time is <span id='date-time'></span>.</p>
+        <p>Date/Time: <span id="datetime"></span></p>
 
+        <script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = dt.toLocaleString();
+        </script>
     <div class="container">
         <h2 class="display-2"> Happy TODO</h2>
         <h3 class="display-3"> Add new</h3>
