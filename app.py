@@ -26,7 +26,7 @@ def create_item(text):
 def read_items():
     return db.session.query(Item)
     
-def update_item(item_id, text, done):
+def update_item(item_id, text):
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
 		#"done": True if done == "on" else False #checkbox
