@@ -40,6 +40,12 @@ def update_item(item_id, text, priority, done):
 	})
     db.session.commit()
     
+def update_item_priority(item_id,priority):
+    db.session.query(Item).filter_by(id = item_id).update({
+		"priority": priority
+	})
+    db.session.commit()
+    
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
@@ -57,12 +63,21 @@ def about():
 
 # edit 
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
-def edit_note(item_id):
+def edit_item(item_id):
     if request.method == "POST":
         update_item(item_id, text=request.form['text'], done=request.form['done'], priority=request.form.get('priority'))
     elif request.method == "GET":
         delete_item(item_id)
     return redirect("/", code=302)
+
+@app.route("/delete/<item_id>")
+def delete(item_id):
+    delete_item(item_id)
+    return redirect("/")
+
+def edit_priority(item_id):
+    if request.method=="POST":
+        update_item_priority(item_id,request.form['priority'])
 
 if __name__ == "__main__":
     db.create_all()
