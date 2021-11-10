@@ -10,3 +10,10 @@ def test_about():
     client = app.test_client()
     response = client.get("/about")
     assert response.status_code == 200 #success
+
+def test_view_index():
+    
+    client = app.test_client()
+    url = "/"
+    response = client.post(text="test_todo", priority="aHIGH")
+    assert response.status_code == 200
