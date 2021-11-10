@@ -5,3 +5,5 @@ gunicorn
 flask_sqlalchemy
 datetime
 requests
+os
+enum
