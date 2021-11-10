@@ -36,6 +36,7 @@ def update_item_priority(item_id,priority):
     db.session.query(Item).filter_by(id = item_id).update({
 		"priority": priority
 	})
+
     db.session.commit()        
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
@@ -62,15 +63,15 @@ def edit_note(item_id):
     return redirect("/", code=302)
 
 # delete 
-@app.route("/delete/<item_id>", methods = ["POST", "GET"])
+@app.route("/delete/<item_id>")
 def delete(item_id):
     delete_item(item_id)
-    return redirect("/", code=302)
+    return redirect("/")
 
 @app.route("/priority/<item_id>",methods=["POST","GET"])
 def edit_priority(item_id):
     if request.method=="POST":
-        update_item_priority(item_id,request.form['priority'])
+        update_item_priority(item_id,)
 
 if __name__ == "__main__":
     db.create_all()
