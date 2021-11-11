@@ -66,8 +66,8 @@ def about():
 def edit_item(item_id):
     if request.method == "POST":
         update_item(item_id, text=request.form['text'], done=request.form['done'])
-    elif request.method == "GET":
-        delete_item(item_id)
+    #elif request.method == "GET":
+    #    delete_item(item_id)
     return redirect("/", code=302)
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
@@ -80,8 +80,7 @@ def delete(item_id):
 def edit_priority(item_id):
     if request.method=="POST":
         update_item_priority(item_id,request.form.get('priority'))
-    return redirect("/", code=304)
-
+    return redirect("/", code=304) 
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
