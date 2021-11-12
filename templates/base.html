@@ -52,7 +52,7 @@
                     <label for="text-input">  created: {{item.dateTime}} </label>
 
                     <div class="input-group"> 
-                        <form method="POST" action="edit/{{item.id}}">
+                        <form method="POST" action="done/{{item.id}}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -71,6 +71,9 @@
                                 <option value="bMEDIAN">Median</option>
                                 <option value="cLOW">Low</option>
                             </select>
+                        </form>
+                        <form method="POST" action="edit/{{item.id}}">
+
                             <div class="input-group-appen" id="button-addon4">
                                 <button class="btn btn-outline-secondary" type="submit" value="update" name="text">Update</button>
                             </div>
