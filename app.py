@@ -33,10 +33,11 @@ def create_item(text, priority):
 def read_items():
     return db.session.query(Item).order_by(Item.priority).all()
     
-def update_item(item_id, text, done):
+def update_item(item_id, text, done,priority):
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
-		#"done": True if done == "on" else False #checkbox
+        "done": not item.done,
+        "priority: priority
 	})
     db.session.commit()
 def update_done(item_id):
@@ -59,7 +60,7 @@ def delete_item(item_id):
 @app.route("/", methods = ["POST", "GET"])
 def view_index():
     if request.method == "POST":
-        create_item(request.form['text'], request.form.get('priority'))
+        create_item(request.form['text'], request.form['priority'])
     return render_template("base.html", items = read_items())
 
 @app.route("/about")
@@ -70,13 +71,12 @@ def about():
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_item(item_id):
     if request.method == "POST":
-        update_item(item_id, text=request.form['text'], done=request.form['done'])
+        update_item(item_id, text=request.form['text'], done=request.form['done'],priority=request.form['priority'])
     #elif request.method == "GET":
     #    delete_item(item_id)
     return redirect("/", code=302)
 
 @app.route("/done/<item_id>", methods = ["POST", "GET"])
-
 def edit_done(item_id):
     if request.method == "POST":
         update_done(item_id)
