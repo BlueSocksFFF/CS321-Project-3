@@ -89,33 +89,39 @@
         <h3 class="display-3"> done</h3>
         {% for item in items %}
             {% if item.done == true %}
-                <p>
-                    <div class="input-group"> 
-                        <form method="POST" action="edit/{{item.id}}">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="hidden" name="done" value="off" placeholder="{{item.dateTime}}" >
-                                    </div>
+            <p>
+                <label for="text-input">  created: {{item.dateTime}} </label>
+
+                <div class="input-group"> 
+                    <form method="POST" action="edit/{{item.id}}">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox"  name="done" value="1" id ="text-input">
                                 </div>
-                                <input type="text" class="form-control" title="{{item.dateTime}}" value="{{item.text}}" name="text">
                             </div>
-                        </form>
-                        <form method="POST" action="delete/{{item.id}}">
-                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                        </form>
-                        <form method="POST" action="priority/{{item.id}}">
-                            <select class="selectpicker form-control" name="priority">
-                                <option value="aHIGH">High</option>
-                                <option value="bMEDIAN">Median</option>
-                                <option value="cLOW">Low</option>
-                            </select>
-                            <div class="input-group-appen" id="button-addon4">
-                                <button class="btn btn-outline-secondary" type="submit" value="update" name="text">Update</button>
-                            </div>
-                        </form>
-                    </div>
-                </p>
+                            <input type="text" class="form-control" value="{{item.text}}" name="text">
+                        </div>
+
+                        <select class="selectpicker form-control" name="priority" title="{{item.priority}}">
+                            <option value="aHIGH">High</option>
+                            <option value="bMEDIAN">Median</option>
+                            <option value="cLOW">Low</option>
+                        </select>
+
+                        <div class="input-group-appen" id="button-addon4">
+                            <button class="btn btn-outline-secondary" type="submit" value="update" name="text">Update</button>
+                        </div>
+
+                    </form>
+                    <form method="POST" action="delete/{{item.id}}">
+                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                    </form>
+                
+
+                
+                </div>
+            </p>
             {% endif %}
         {% endfor %}
     </div>
