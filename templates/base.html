@@ -52,30 +52,30 @@
                     <label for="text-input">  created: {{item.dateTime}} </label>
 
                     <div class="input-group"> 
-                        <form method="POST" action="done/{{item.id}}">
+                        <form method="POST" action="edit/{{item.id}}">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="checkbox" onclick="redicrect('/done/{{item.id}}')" data-target="/done/{{item.id}}" name="done" id ="text-input">
+                                        <input type="checkbox" onclick="redicrect('/edit/{{item.id}}')" data-target="/edit/{{item.id}}" name="done" id ="text-input">
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" value="{{item.text}}" name="text">
                             </div>
-                        </form>
-                        <form method="POST" action="delete/{{item.id}}">
-                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                        </form>
-                        <form method="POST" action="priority/{{item.id}}">
                             <select class="selectpicker form-control" name="priority" onchange="redicrect('/priority/<item_id>')">
                                 <option value="aHIGH">High</option>
                                 <option value="bMEDIAN">Median</option>
                                 <option value="cLOW">Low</option>
                             </select>
-                        </form>
-
                             <div class="input-group-appen" id="button-addon4">
                                 <button class="btn btn-outline-secondary" type="submit" value="update" name="text">Update</button>
                             </div>
+                        </form>
+                        <form method="POST" action="delete/{{item.id}}">
+                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                        </form>
+                    
+
+                    
                     </div>
                 </p>
             {% endif %}
