@@ -79,7 +79,7 @@
 
         <h3 class="display-3"> done</h3>
         {% for item in items %}
-            {% if item.done == "on" %}
+            {% if item.done == true %}
                 <p>
                     <div class="input-group"> 
                         <form method="POST" action="edit/{{item.id}}">
