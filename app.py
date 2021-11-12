@@ -21,7 +21,7 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     text = db.Column(db.Text)
     priority = db.Column(db.Enum(Priority))
-    done = db.Column(db.Boolean)
+    done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.DateTime, default=datetime.now())
     
 def create_item(text, priority):
