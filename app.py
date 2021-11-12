@@ -59,7 +59,7 @@ def delete_item(item_id):
 @app.route("/", methods = ["POST", "GET"])
 def view_index():
     if request.method == "POST":
-        create_item(request.form['text'], request.form.get('priority'))
+        create_item(request.form['text'], request.form['priority'])
     return render_template("base.html", items = read_items())
 
 @app.route("/about")
