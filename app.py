@@ -71,7 +71,7 @@ def about():
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_item(item_id):
     if request.method == "POST":
-        update_item(item_id, text=request.form['text'], done=request.form['done'],priority=request.form.get('priority'))
+        update_item(item_id, text=request.form['text'], done=request.form.get('done'),priority=request.form.get('priority'))
     #elif request.method == "GET":
     #    delete_item(item_id)
     return redirect("/", code=302)
