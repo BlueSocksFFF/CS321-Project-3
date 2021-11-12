@@ -26,7 +26,6 @@ class Item(db.Model):
     
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
-    item.update({"priority": priority})
     db.session.add(item)
     db.session.commit()
     db.session.refresh(item)
@@ -81,8 +80,7 @@ def edit_item(item_id):
 def edit_done(item_id):
     if request.method == "POST":
         update_done(item_id)
-    #elif request.method == "GET":
-    #    delete_item(item_id)
+
     return redirect("/", code=302)
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
