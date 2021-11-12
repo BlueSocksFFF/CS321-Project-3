@@ -36,8 +36,8 @@ def read_items():
 def update_item(item_id, text, done,priority):
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
-        "done": not item.done,
-        "priority: priority
+        "done": True if done=="1" else False,
+        "priority": priority
 	})
     db.session.commit()
 def update_done(item_id):
