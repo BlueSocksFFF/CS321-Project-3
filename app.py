@@ -36,10 +36,15 @@ def read_items():
 def update_item(item_id, text, done):
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
-		"done": True if done == "on" else False #checkbox
+		#"done": True if done == "on" else False #checkbox
 	})
     db.session.commit()
-    
+def update_done(item_id):
+    item=db.session.query(Item).filter_by(id = item_id)
+    item.update({
+		"done": not item.done
+	})
+    db.session.commit()
 def update_item_priority(item_id,priority):
     db.session.query(Item).filter_by(id = item_id).update({
 		"priority": priority
@@ -66,6 +71,15 @@ def about():
 def edit_item(item_id):
     if request.method == "POST":
         update_item(item_id, text=request.form['text'], done=request.form['done'])
+    #elif request.method == "GET":
+    #    delete_item(item_id)
+    return redirect("/", code=302)
+
+@app.route("/done/<item_id>", methods = ["POST", "GET"])
+
+def edit_done(item_id):
+    if request.method == "POST":
+        update_done(item_id)
     #elif request.method == "GET":
     #    delete_item(item_id)
     return redirect("/", code=302)

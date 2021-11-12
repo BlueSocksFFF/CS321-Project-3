@@ -49,7 +49,7 @@
              {% if item.done == false %}
 
                 <p>
-                    <label for="text-input"> {{item.dateTime}} </label>
+                    <label for="text-input">  created on: {{item.dateTime}} </label>
 
                     <div class="input-group"> 
                         <form method="POST" action="edit/{{item.id}}">
@@ -59,7 +59,6 @@
                                         <input type="checkbox" onclick="redicrect('/edit/{{item.id}}')" data-target="/edit/{{item.id}}" name="done" id ="text-input">
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" title="{{item.dateTime}}" value="{{item.text}}" name="text">
                             </div>
                         </form>
                         <form method="POST" action="delete/{{item.id}}">
