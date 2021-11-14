@@ -106,9 +106,8 @@
         {% for item in items %}
             {% if item.done == true %}
             <p>
-
+            <div class="row">
                 <form method="POST" action="edit/{{item.id}}">
-                    <div class="row">
 
 
                         <div class="col-6" >
@@ -139,17 +138,16 @@
                               </label>
                             </div>
                         </div>
-                        <div class="col"> 
-                            <form method="POST" action="delete/{{item.id}}">
-                                <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    
-
+                        
                 </form>
-                
+                <div class="row">
+                    <form method="POST" action="delete/{{item.id}}">
+                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                    </form>
+                </div>
+            
+            </div>
+   
 
             
         </p>

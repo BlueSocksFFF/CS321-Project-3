@@ -58,10 +58,10 @@ def test_delete():
 def test_edit_priority():
     client = app.test_client()
     
-    url = "/priority/0"
+    url = "/edit/0"
     data = {"priority":"HIGH"}
     
-    text_data = {"text": "Test"}
+    text_data = {"text": "Test","priority":"HIGH"}
     response = client.post("/", data=text_data)
     
     response = client.post(url) # Not working
