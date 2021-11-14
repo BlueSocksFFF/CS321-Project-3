@@ -92,7 +92,7 @@
             <p>
                 <label for="text-input">  created: {{item.dateTime}} </label>
 
-                <div class="input-group"> 
+                <div class="form-row"> 
                     <form method="POST" action="edit/{{item.id}}">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -116,9 +116,9 @@
                             }
                             {% else %} {
                                 <input type="text" class="form-control" style="color:rgb(0,0,0);" value="{{item.text}}" name="text2">
-                            
                             }
                             {& endif %}
+                            
                             <label for="tags">Tags</label>
                             <input type="text" name="tags" id="add-tag-input">
                             <span>
