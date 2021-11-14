@@ -23,9 +23,9 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.DateTime, default=datetime.now())
-    tags = db.Column(db.ARRAY(db.Text))
+    #tags = db.Column(db.ARRAY(db.Text))
 def create_item(text, priority):
-    item = Item(text = text, priority = priority,tag=tag)
+    item = Item(text = text, priority = priority)
     db.session.add(item)
     db.session.commit()
     db.session.refresh(item)
@@ -61,8 +61,7 @@ def about():
 def edit_item(item_id):
     if request.method == "POST":
         update_item(item_id, text=request.form['text'], done=request.form.get('done'),priority=request.form.get('priority'))
-    #elif request.method == "GET":
-    #    delete_item(item_id)
+ 
     return redirect("/", code=302)
 
 @app.route("/tag/<item_id>", methods = ["POST", "GET"])

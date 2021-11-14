@@ -119,7 +119,11 @@
                             
                             }
                             {& endif %}
-                            
+                            <label for="tags">Tags</label>
+                            <input type="text" name="tags" id="add-tag-input">
+                            <span>
+                                <button id="add-tag-button" type="button">Add</button>
+                            </span>
                         </div>
 
                         <select class="selectpicker form-control" name="priority" title="{{item.priority}}">
@@ -136,6 +140,7 @@
                     <form method="POST" action="delete/{{item.id}}">
                         <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
                     </form>
+                    
                 
 
                 
