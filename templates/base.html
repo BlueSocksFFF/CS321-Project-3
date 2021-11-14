@@ -108,17 +108,17 @@
                                 </div>
 
                             </div>
-                            {% if item.priority == "aHIGH" %} {
-                                <input type="text" class="form-control" style="color:rgb(255,0,0);" value="{{item.text}}" name="text2">
+                            {% if item.priority == "HIGH" %} {
                             }
-                            {% elif item.priority == "bMEDIAN" %} {
+                            {% elif item.priority == "MEDIAN" %} {
                                 <input type="text" class="form-control" style="color:rgb(0,0,255);" value="{{item.text}}" name="text2">
                             }
                             {% else %} {
                                 <input type="text" class="form-control" style="color:rgb(0,0,0);" value="{{item.text}}" name="text2">
                             }
                             {& endif %}
-                            
+                            <input type="text" class="form-control" style="color:rgb(255,0,0);" value="{{item.text}}" name="text2">
+
                             <label for="tags">Tags</label>
                             <input type="text" name="tags" id="add-tag-input">
                             <span>
