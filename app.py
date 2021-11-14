@@ -23,9 +23,9 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.DateTime, default=datetime.now())
-    
+    tags = db.Column(db.ARRAY(db.Text))
 def create_item(text, priority):
-    item = Item(text = text, priority = priority)
+    item = Item(text = text, priority = priority,tag=tag)
     db.session.add(item)
     db.session.commit()
     db.session.refresh(item)
@@ -40,18 +40,7 @@ def update_item(item_id, text, done,priority):
         "priority": priority
 	})
     db.session.commit()
-def update_done(item_id):
-    item=db.session.query(Item).filter_by(id = item_id)
-    item.update({
-		"done": not item.done
-	})
-    db.session.commit()
-def update_item_priority(item_id,priority):
-    db.session.query(Item).filter_by(id = item_id).update({
-		"priority": priority
-	})
-    db.session.commit()
-    
+
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
@@ -76,12 +65,10 @@ def edit_item(item_id):
     #    delete_item(item_id)
     return redirect("/", code=302)
 
-@app.route("/done/<item_id>", methods = ["POST", "GET"])
-def edit_done(item_id):
+@app.route("/tag/<item_id>", methods = ["POST", "GET"])
+def add_tag(item_id):
     if request.method == "POST":
-        update_done(item_id)
-
-    return redirect("/", code=302)
+        return redirect("/", code=302)
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
 def delete(item_id):
@@ -89,11 +76,7 @@ def delete(item_id):
         delete_item(item_id)
     return redirect("/", code=303)
 
-@app.route("/priority/<item_id>",methods=["POST","GET"])
-def edit_priority(item_id):
-    if request.method=="POST":
-        update_item_priority(item_id,request.form.get('priority'))
-    return redirect("/", code=304) 
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)

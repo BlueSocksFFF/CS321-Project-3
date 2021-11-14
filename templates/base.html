@@ -101,9 +101,25 @@
                                 </div>
 
                             </div>
-                            <input type="text" class="form-control" value="{{item.text}}" name="text">
-                            <input type="text" class="form-control" value="{{item.text}}" name="tag">
+                            <input type="text" class="form-control" value="{{item.text}}" name="text2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox"  name="done" value="1" id ="text-input" checked="true">
+                                </div>
 
+                            </div>
+                            {% if item.priority == "aHIGH" %} {
+                                <input type="text" class="form-control" style="color:rgb(255,0,0);" value="{{item.text}}" name="text2">
+                            }
+                            {% elif item.priority == "bMEDIAN" %} {
+                                <input type="text" class="form-control" style="color:rgb(0,0,255);" value="{{item.text}}" name="text2">
+                            }
+                            {% else %} {
+                                <input type="text" class="form-control" style="color:rgb(0,0,0);" value="{{item.text}}" name="text2">
+                            
+                            }
+                            {& endid %}
+                            
                         </div>
 
                         <select class="selectpicker form-control" name="priority" title="{{item.priority}}">
