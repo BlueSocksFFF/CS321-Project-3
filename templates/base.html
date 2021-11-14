@@ -49,54 +49,52 @@
         {% for item in items %}
              {% if item.done == false %}
 
-                <p>
-
-                        <form method="POST" action="edit/{{item.id}}">
-                            <div class="row">
-
-
-                                <div class="col-6" >
-                                    <label class="sr-only" for="task">Task</label>
-
-                                    <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                                </div>
-                                <div class="col"> 
-                                    <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
-                                        <option value="aHIGH">High</option>
-                                        <option value="bMEDIAN">Median</option>
-                                        <option value="cLOW">Low</option>
-                                    </select>
-                                </div>
-                                <div class="col"> 
-
-                                    <div class="input-group mb-2 mr-sm-2">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">created: {{item.dateTime}}</div>
-                                        </div>
-                                    </div>                               
-                                </div>
-                                <div class="col-auto my-1">
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="done" value=1>
-                                      <label class="form-check-label" for="autoSizingCheck2">
-                                        Done?
-                                      </label>
+             <p>
+                <div class="row">
+                    <form method="POST" action="edit/{{item.id}}">
+    
+    
+                            <div class="col-6" >
+                                <label class="sr-only" for="task">Task</label>
+    
+                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                            </div>
+                            <div class="col"> 
+                                <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
+                                    <option value="aHIGH">High</option>
+                                    <option value="bMEDIAN">Median</option>
+                                    <option value="cLOW">Low</option>
+                                </select>
+                            </div>
+                            <div class="col"> 
+    
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">created: {{item.dateTime}}</div>
                                     </div>
-                                </div>
-                                <div class="col"> 
-                                    <form method="POST" action="delete/{{item.id}}">
-                                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                                    </form>
+                                </div>                               
+                            </div>
+                            <div class="col-auto my-1">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="done" value=1>
+                                  <label class="form-check-label" for="autoSizingCheck2">
+                                    Done?
+                                  </label>
                                 </div>
                             </div>
-
                             
-
+                    </form>
+                    <div class="row">
+                        <form method="POST" action="delete/{{item.id}}">
+                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
                         </form>
-                        
+                    </div>
 
-                    
-                </p>
+                </div>
+       
+    
+                
+            </p>
             {% endif %}
 
         {% endfor %}
