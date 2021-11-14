@@ -1,10 +1,7 @@
 <html>
 <head>
     <title>Home: TODO by Diane and Hoang</title>
-    <link rel="stylesheet" 
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
     <script type="text/javascript">
@@ -50,15 +47,16 @@
              {% if item.done == false %}
 
              <p>
-                <div class="row">
                     <form method="POST" action="edit/{{item.id}}">
-    
+                        <div class="row">
+
     
                             <div class="col-6" >
                                 <label class="sr-only" for="task">Task</label>
     
                                 <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
                             </div>
+
                             <div class="col"> 
                                 <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
                                     <option value="aHIGH">High</option>
@@ -66,14 +64,15 @@
                                     <option value="cLOW">Low</option>
                                 </select>
                             </div>
+
                             <div class="col"> 
-    
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">created: {{item.dateTime}}</div>
                                     </div>
                                 </div>                               
                             </div>
+
                             <div class="col-auto my-1">
                                 <div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="done" value=1>
@@ -83,14 +82,19 @@
                                 </div>
                             </div>
                             
+                            <div class="col-auto my-1" id="button-addon">
+                                <button class="btn btn-outline-primary" type="submit" value="update">Add</button>
+                            </div>    
+                            <div class="row">
+                                <form method="POST" action="delete/{{item.id}}">
+                                    <button class="btn btn-outline-secondary" type="submit" onclick="redicrect('/delete/{{item.id}}')" value="update">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                
                     </form>
-                    <div class="row">
-                        <form method="POST" action="delete/{{item.id}}">
-                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                        </form>
-                    </div>
+                    
 
-                </div>
        
     
                 
@@ -106,8 +110,6 @@
             <p>
             <div class="row">
                 <form method="POST" action="edit/{{item.id}}">
-
-
                         <div class="col-6" >
                             <label class="sr-only" for="task">Task</label>
 
@@ -136,13 +138,14 @@
                               </label>
                             </div>
                         </div>
-                        
+
+                        <div class="row">
+                            <form method="POST" action="delete/{{item.id}}">
+                                <button class="btn btn-outline-secondary" type="submit" onclick="redicrect('/delete/{{item.id}}')" value="update">Remove</button>
+                            </form>
+                        </div>
                 </form>
-                <div class="row">
-                    <form method="POST" action="delete/{{item.id}}">
-                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                    </form>
-                </div>
+                
             
             </div>
    
