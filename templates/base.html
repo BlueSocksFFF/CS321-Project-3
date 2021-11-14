@@ -45,12 +45,19 @@
         <h3 class="display-3">Not done</h3>
         {% for item in items %}
              {% if item.done == false %}
-
-             <p>
-                    <form method="POST" action="edit/{{item.id}}">
+      
+                <div>
+                    <form style="width:300px; display:inline-block;" method="POST" action="delete/{{item.id}}">
+                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                    </form>
+                    <form style="width:300px; display:inline-block;" method="POST" action="edit/{{item.id}}">
                         <div class="row">
 
-    
+      
+                            <div class="col-auto my-1" id="button-addon">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>    
+
                             <div class="col-6" >
                                 <label class="sr-only" for="task">Task</label>
     
@@ -81,24 +88,16 @@
                                   </label>
                                 </div>
                             </div>
-                            
-                            <div class="col-auto my-1" id="button-addon">
-                                <button class="btn btn-outline-primary" type="submit" value="update">Add</button>
-                            </div>    
-                            <div class="row">
-                                <form method="POST" action="delete/{{item.id}}">
-                                    <button class="btn btn-outline-secondary" type="submit" onclick="redicrect('/delete/{{item.id}}')" value="update">Remove</button>
-                                </form>
-                            </div>
+                          
                         </div>
                 
+                
                     </form>
-                    
-
+                   
+                </div>
        
     
                 
-            </p>
             {% endif %}
 
         {% endfor %}
@@ -112,8 +111,12 @@
                 <form method="POST" action="edit/{{item.id}}">
                         <div class="col-6" >
                             <label class="sr-only" for="task">Task</label>
+                            <!--depend on priority, we use different color code -->
+                            {% if item.priority == "HIGH" %} 
+                                <input type="text" class="form-control" Svalue="{{item.text}}" id="task" name="text" placeholder="Task">
+                            {% elif item.priority =="MEDIUM" %}
+                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
 
-                            <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
                         </div>
                         <div class="col"> 
                             <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
