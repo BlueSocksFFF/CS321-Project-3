@@ -25,22 +25,19 @@
         <h2 class="display-2"> TODO - by Diane and Hoang</h2>
         <h5 class="display-5"> - better move yo ass as this is a capitalist society </h5>
         <h3 class="display-3"> Add new</h3>
-            <form method="POST" action="/">
-                <div class="row">
-                    <div class="col-auto my-1" id="button-addon">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                    </div>    
-                    <div class="col-5" > 
-                        <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                    </div>    
-                    <div class="col"> 
-                        <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
+            <form class="form-inline" method="POST" action="/">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" name="text" class="form-control" placeholder="Add a new TODO item">
+                        <select class="form-select" name="priority" >
                             <option value="aHIGH">High</option>
                             <option value="bMEDIAN">Median</option>
                             <option value="cLOW">Low</option>
-                        </select>
+                        </select> 
+                        <div class="input-group-appen" id="button-addon">
+                            <button class="btn btn-outline-primary" type="submit" value="update">Add</button>
+                        </div>
                     </div>
-                    
                 </div>
             </form>
         <!--Todo Table-->

@@ -76,10 +76,7 @@ def edit_item(item_id):
  
     return redirect("/", code=302)
 
-@app.route("/tag/<item_id>", methods = ["POST", "GET"])
-def add_tag(item_id):
-    if request.method == "POST":
-        return redirect("/", code=302)
+
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
 def delete(item_id):
