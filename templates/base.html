@@ -44,7 +44,7 @@
 
         <h3 class="display-3">Not done</h3>
         {% for item in items %}
-             {% if item.done == false %}
+            % if item.done == false %}
       
                 <div>
                     <form style="float: left;" method="POST" action="delete/{{item.id}}">
@@ -96,8 +96,6 @@
                    
                 </div>
        
-    
-                
             {% endif %}
 
         {% endfor %}
