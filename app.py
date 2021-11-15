@@ -16,21 +16,13 @@ class Priority(enum.Enum):
     aHIGH = 0
     bMEDIAN = 1
     cLOW = 2
-tags = db.Table('tags',
-    db.Column('Tag_id', db.Integer, db.ForeignKey('Tag.id'), primary_key=True),
-    db.Column('Item_id', db.Integer, db.ForeignKey('Item.id'), primary_key=True)
-)
+
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     text = db.Column(db.Text)
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-    #tags = db.relationship('Tag',secondary=tags, lazy='subquery', backref=db.backref('items', lazy=True))
-                    
-class Tag(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-
 
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
