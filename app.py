@@ -22,7 +22,7 @@ class Item(db.Model):
     text = db.Column(db.Text)
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
-    dateTime = db.Column(db.DateTime, default=datetime.now())
+    dateTime = db.Column(db.Text, default= datetime.strptime(datetime.now(), "%m/%d/%Y %H:%M:%S"))
     #tags = db.Column(db.ARRAY(db.Text))
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
