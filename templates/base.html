@@ -62,7 +62,7 @@
                                 <label class="sr-only" for="task">Task</label>
     
                                 {% if item.priority == 0 %}
-                                    <input type="text" class="form-control" style = color:red !important; value="{{item.priority}}" id="task" name="text" placeholder="Task">
+                                    <input type="text" class="form-control" style = color:red !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% elif item.priority == 1 %}
                                     <input type="text" class="form-control" style=color:blue !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% else %} 
@@ -81,7 +81,7 @@
                             <div class="col"> 
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">created: {{item.dateTime}}</div>
+                                        <div class="input-group-text">created: {{item.priority }}</div>
                                     </div>
                                 </div>                               
                             </div>
