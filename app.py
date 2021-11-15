@@ -76,6 +76,14 @@ def delete(item_id):
     return redirect("/", code=303)
 
 
+@app.template_filter()
+def to_string(obj):
+    if isinstance(obj, Enum):
+        return obj.value
+
+    # For all other types, let Jinja use default behavior
+    return obj
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
