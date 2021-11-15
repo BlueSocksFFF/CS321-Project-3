@@ -64,7 +64,7 @@
                                 {% if item.priority | to_string  =="0"  %}
 
                                     <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                                {% elif item.priority | to_string  == "1"}
+                                {% elif item.priority | to_string  == "1" %}
                                     <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {%else %} 
                                     <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
