@@ -61,9 +61,9 @@
                             <div class="col-5" >
                                 <label class="sr-only" for="task">Task</label>
     
-                                {% if item.priority == "HIGH" %}
+                                {% if item.priority == "aHIGH" %}
                                     <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                                {% elif item.priority == "MEDIUM" %}
+                                {% elif item.priority == "bMEDIAN" %}
                                     <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% else %} 
                                     <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
