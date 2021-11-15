@@ -47,7 +47,7 @@
              {% if item.done == false %}
       
                 <div>
-                    <form style="float: left;"    method="POST" action="delete/{{item.id}}">
+                    <form style="float: left;" method="POST" action="delete/{{item.id}}">
                         <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
                     </form>
                     <form  method="POST" action="edit/{{item.id}}">
@@ -117,7 +117,7 @@
                             <label class="sr-only" for="task">Task</label>
                             <!--depend on priority, we use different color code -->
                             {% if item.priority == "HIGH" %} 
-                                <input type="text" class="form-control" Svalue="{{item.text}}" id="task" name="text" placeholder="Task">
+                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
                             {% elif item.priority =="MEDIUM" %}
                                 <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
 
