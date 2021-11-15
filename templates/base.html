@@ -22,7 +22,7 @@
         document.getElementById("datetime").innerHTML = dt.toLocaleString();
         </script>
     <div class="container">
-        <h2 class="display-2"> TODO </h2>
+        <h2 class="display-2"> TODO - by Diane and Hoang</h2>
         <h5 class="display-5"> - better move yo ass as this is a capitalist society </h5>
         <h3 class="display-3"> Add new</h3>
             <form class="form-inline" method="POST" action="/">
@@ -63,10 +63,10 @@
     
                                 <div class="col-5" >
                                     <label class="sr-only" for="task">Task</label>
-                                    {% if item.priority == HIGH %}
+                                    {% if item.priority == "HIGH" %}
     
                                         <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                                    {%elif item.priority == MEDIUM %}
+                                    {%elif item.priority == "MEDIUM" %}
                                         <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
                                     {%else %} 
                                         <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
