@@ -62,11 +62,11 @@
                                 <label class="sr-only" for="task">Task</label>
     
                                 {% if item.priority == 0 %}
-                                    <input type="text" class="form-control" style = color:red !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                    <input type="text" class="form-control" style = color:red !important; value="{{item.priority}}" id="task" name="text" placeholder="Task">
                                 {% elif item.priority == 1 %}
                                     <input type="text" class="form-control" style=color:blue !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% else %} 
-                                    <input type="text" class="form-control" style="color:red" !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                    <input type="text" class="form-control" style="color:black" !important; value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% endif %}
                             </div>                           
 
