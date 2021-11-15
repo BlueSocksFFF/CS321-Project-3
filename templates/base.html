@@ -82,7 +82,7 @@
                             <div class="col"> 
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">created: {{item.priority }}</div>
+                                        <div class="input-group-text">created: {{item.priority | to_string}}</div>
                                     </div>
                                 </div>                               
                             </div>
@@ -136,7 +136,7 @@
                             </div>
 
                             <div class="col"> 
-                                <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}} | to_string">
+                                <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
                                     <option value="aHIGH">High</option>
                                     <option value="bMEDIAN">Median</option>
                                     <option value="cLOW">Low</option>
