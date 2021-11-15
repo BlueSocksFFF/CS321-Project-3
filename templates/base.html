@@ -104,64 +104,64 @@
         <h3 class="display-3"> done</h3>
         {% for item in items %}
             {% if item.done == true %}
-            <p>
-                <div class="row">
+                <p>
+                    <div class="row">
 
-                    <form style="float: left;"    method="POST" action="delete/{{item.id}}">
-                        <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
-                    </form>
-                    <form method="POST" action="edit/{{item.id}}">
-                            <div class="col-6" >
-                                <label class="sr-only" for="task">Task</label>
-                                <!--depend on priority, we use different color code -->
-                                {% if item.priority == "HIGH" %} {
-                                    <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                        <form style="float: left;"    method="POST" action="delete/{{item.id}}">
+                            <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                        </form>
+                        <form method="POST" action="edit/{{item.id}}">
+                                <div class="col-6" >
+                                    <label class="sr-only" for="task">Task</label>
+                                    <!--depend on priority, we use different color code -->
+                                    {% if item.priority == "HIGH" %} {
+                                        <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
 
-                                }
-                                {% elif item.priority =="MEDIUM" %} {
-                                    <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
-                                }
-                                {% else  %} {
-                                    <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                    }
+                                    {% elif item.priority =="MEDIUM" %} {
+                                        <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                    }
+                                    {% else  %} {
+                                        <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
 
-                                }
-                                {& endif %}
+                                    }
+                                    {& endif %}
 
-                            </div>
-
-                            <div class="col"> 
-                                <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
-                                    <option value="aHIGH">High</option>
-                                    <option value="bMEDIAN">Median</option>
-                                    <option value="cLOW">Low</option>
-                                </select>
-                            </div>
-
-                            <div class="col"> 
-
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">created: {{item.dateTime}}</div>
-                                    </div>
-                                </div>                               
-                            </div>
-
-                            <div class="col-auto my-1">
-                                <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="done" value=1>
-                                <label class="form-check-label" for="autoSizingCheck2">
-                                    Done?
-                                </label>
                                 </div>
-                            </div>
 
-                            
-                    </form>
+                                <div class="col"> 
+                                    <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
+                                        <option value="aHIGH">High</option>
+                                        <option value="bMEDIAN">Median</option>
+                                        <option value="cLOW">Low</option>
+                                    </select>
+                                </div>
+
+                                <div class="col"> 
+
+                                    <div class="input-group mb-2 mr-sm-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">created: {{item.dateTime}}</div>
+                                        </div>
+                                    </div>                               
+                                </div>
+
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="autoSizingCheck2" name="done" value=1>
+                                    <label class="form-check-label" for="autoSizingCheck2">
+                                        Done?
+                                    </label>
+                                    </div>
+                                </div>
+
+                                
+                        </form>
+                    
+                    </div>
+
                 
-                </div>
-
-            
-            </p>
+                </p>
             {% endif %}
         {% endfor %}
     </div>
