@@ -118,8 +118,12 @@
 
                             <div class="col-6" >
                                 <label class="sr-only" for="task">Task</label>
-    
-                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                {% if item.priority == HIGH %}
+
+                                    <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                {%elif item.priority == MEDIUM %}
+                                    <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
+
                             </div>
 
                             <div class="col"> 
