@@ -16,14 +16,22 @@ class Priority(enum.Enum):
     aHIGH = 0
     bMEDIAN = 1
     cLOW = 2
-
+tags = db.Table('tags',
+    db.Column('Tag_id', db.Integer, db.ForeignKey('Tag.id'), primary_key=True),
+    db.Column('Item_id', db.Integer, db.ForeignKey('Item.id'), primary_key=True)
+)
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     text = db.Column(db.Text)
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-    #tags = db.Column(db.ARRAY(db.Text))
+    tags = db.relationship('Tag',secondary=tags, lazy='subquery', backref=db.backref('items', lazy=True))
+                    
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
     db.session.add(item)
@@ -45,8 +53,17 @@ def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
 
-# app
-@app.route("/", methods = ["POST", "GET"])
+def add_tags(tag):
+    existing_tag = Tag.query.filter(Tag.name == tag.lower()).one_or_none()
+    """if it does return existing tag objec to list"""
+    if existing_tag is not None:
+        return existing_tag
+    else:
+       new_tag = Tag()
+       new_tag.name = tag.lower()
+       return new_tag@app.route("/", methods = ["POST", "GET"])
+
+
 def view_index():
     if request.method == "POST":
         create_item(request.form['text'], request.form['priority'])
@@ -83,6 +100,8 @@ def to_string(obj):
 
     # For all other types, let Jinja use default behavior
     return obj
+
+    
 
 if __name__ == "__main__":
     db.create_all()
