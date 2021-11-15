@@ -3,6 +3,7 @@
     <title>Home: TODO by Diane and Hoang</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="custom.css" />
 
     <script src="../js/bootstrap-tagsinput.js"></script>
 
@@ -25,12 +26,12 @@
         </script>
 
     <div class="jumbotron">
-        <h1>TODO - by Diane and Hoang</h1>      
+        <h1>TODO - by Diane and Hoang - CS321 Project 3 </h1>      
         <p>Better move yo ass. A Capitalist society waits for no one</p>
     </div>
   
     <div class="container">
-        <h5 class="display-2"> Add new task:</h1>
+        <h2 class="display-2"> Add new task:</h1>
             <form class="form" method="POST" action="/">
                 <div class="row" >
 
@@ -56,7 +57,7 @@
             </form>
         <!--Todo Table-->
 
-        <h5 class="display-2">Task in progress:</h1>
+        <h2 class="display-2">Task in progress:</h1>
     
 
         {% for item in items %}
@@ -124,7 +125,7 @@
         {% endfor %}
 
 
-        <h5 class="display-2"> Task done:</h3>
+        <h2 class="display-2"> Task done:</h3>
         {% for item in items %}
             {% if item.done == true %}
                 <div>
