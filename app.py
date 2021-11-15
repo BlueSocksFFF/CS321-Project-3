@@ -75,10 +75,10 @@ def delete(item_id):
         delete_item(item_id)
     return redirect("/", code=303)
 
-
+ 
 @app.template_filter()
 def to_string(obj):
-    if isinstance(obj, Enum):
+    if isinstance(obj, enum.Enum):
         return obj.value
 
     # For all other types, let Jinja use default behavior
