@@ -26,7 +26,7 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-    tags = db.relationship('Tag',secondary=tags, lazy='subquery', backref=db.backref('items', lazy=True))
+    #tags = db.relationship('Tag',secondary=tags, lazy='subquery', backref=db.backref('items', lazy=True))
                     
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
