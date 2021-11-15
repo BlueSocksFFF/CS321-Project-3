@@ -117,9 +117,11 @@
                             <label class="sr-only" for="task">Task</label>
                             <!--depend on priority, we use different color code -->
                             {% if item.priority == "HIGH" %} 
-                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">
                             {% elif item.priority =="MEDIUM" %}
-                                <input type="text" class="form-control" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                                <input type="text" class="form-control" style="color:blue" value="{{item.text}}" id="task" name="text" placeholder="Task">
+                            {% else  %}
+                                <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
 
                         </div>
                         <div class="col"> 
