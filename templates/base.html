@@ -47,7 +47,7 @@
              {% if item.done == false %}
       
                 <div>
-                    <form style="float: left;"                method="POST" action="delete/{{item.id}}">
+                    <form style="float: left;"    method="POST" action="delete/{{item.id}}">
                         <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
                     </form>
                     <form  method="POST" action="edit/{{item.id}}">
@@ -108,6 +108,10 @@
             {% if item.done == true %}
             <p>
             <div class="row">
+
+                <form style="float: left;"    method="POST" action="delete/{{item.id}}">
+                    <button class="btn btn-outline-secondary" type="submit" value="update">Remove</button>
+                </form>
                 <form method="POST" action="edit/{{item.id}}">
                         <div class="col-6" >
                             <label class="sr-only" for="task">Task</label>
@@ -142,11 +146,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <form method="POST" action="delete/{{item.id}}">
-                                <button class="btn btn-outline-secondary" type="submit" onclick="redicrect('/delete/{{item.id}}')" value="update">Remove</button>
-                            </form>
-                        </div>
+                        
                 </form>
                 
             
