@@ -28,7 +28,7 @@
     </div>
   
     <div class="container">
-        <h3 class="display-2"> Add new task:</h3>
+        <h1 class="display-2"> Add new task:</h1>
             <form class="form" method="POST" action="/">
                 <div class="row" >
 
@@ -52,10 +52,8 @@
             </form>
         <!--Todo Table-->
 
-        <h3 class="display-2">Task in progress:</h3>
-        {% if items|length == 0 %}
-            <h3 class="display-1"> No task found. Awaiting your tasks:</h3>
-        {% endif %}
+        <h1 class="display-2">Task in progress:</h1>
+    
 
         {% for item in items %}
             {% if item.done == false %}
