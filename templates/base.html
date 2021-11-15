@@ -42,7 +42,7 @@
             </form>
         <!--Todo Table-->
 
-        <h3 class="display-3">In progress</h3>
+        <h3 class="display-3">Not done</h3>
         {% for item in items %}
             {% if item.done == false %}
       
@@ -60,7 +60,7 @@
 
                             <div class="col-5" >
                                 <label class="sr-only" for="task">Task</label>
-                                
+    
                                 {% if item.priority | to_string  == 0  %}
 
                                     <input type="text" class="form-control" style="color:red" value="{{item.text}}" id="task" name="text" placeholder="Task">

@@ -23,7 +23,7 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-
+    #tags = db.Column(db.ARRAY(db.Text))
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
     db.session.add(item)
@@ -44,21 +44,9 @@ def update_item(item_id, text, done,priority):
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
-'''
-def add_tags(tag):
-    existing_tag = Tag.query.filter(Tag.name == tag.lower()).one_or_none()
-    """if it does return existing tag objec to list"""
-    if existing_tag is not None:
-        return existing_tag
-    else:
-       new_tag = Tag()
-       new_tag.name = tag.lower()
-       return new_tag@app.route("/", methods = ["POST", "GET"])
 
-'''
-
-
-
+# app
+@app.route("/", methods = ["POST", "GET"])
 def view_index():
     if request.method == "POST":
         create_item(request.form['text'], request.form['priority'])
@@ -76,7 +64,10 @@ def edit_item(item_id):
  
     return redirect("/", code=302)
 
-
+@app.route("/tag/<item_id>", methods = ["POST", "GET"])
+def add_tag(item_id):
+    if request.method == "POST":
+        return redirect("/", code=302)
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
 def delete(item_id):
@@ -92,8 +83,6 @@ def to_string(obj):
 
     # For all other types, let Jinja use default behavior
     return obj
-
-    
 
 if __name__ == "__main__":
     db.create_all()
