@@ -44,7 +44,7 @@ def update_item(item_id, text, done,priority):
 def delete_item(item_id):
     db.session.query(Item).filter_by(id=item_id).delete()
     db.session.commit()
-
+'''
 def add_tags(tag):
     existing_tag = Tag.query.filter(Tag.name == tag.lower()).one_or_none()
     """if it does return existing tag objec to list"""
@@ -54,6 +54,9 @@ def add_tags(tag):
        new_tag = Tag()
        new_tag.name = tag.lower()
        return new_tag@app.route("/", methods = ["POST", "GET"])
+
+'''
+
 
 
 def view_index():
