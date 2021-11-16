@@ -25,6 +25,7 @@ class Item(db.Model):
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
     tag = db.Column(db.Text)
+    
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
     db.session.add(item)
@@ -33,6 +34,7 @@ def create_item(text, priority):
     
 def read_items():
     return db.session.query(Item).order_by(Item.priority).all()
+
 
 def update_tag(item_id,tags):
     tags_list=tags.strip().split(",")
