@@ -50,9 +50,7 @@
                     <div class="col">
                         <button class="btn btn-outline-primary" type="submit" value="update">Add</button>
                     </div>
-                    <div class="col-3">
-                        <input type="text" name="tag" class="form-control" placeholder="Add tags with comma seperated">
-                    </div>
+                  
                 </div>
             </form>
         <!--Todo Table-->
@@ -87,7 +85,7 @@
                                     <input type="text" class="form-control" style="color:black" value="{{item.text}}" id="task" name="text" placeholder="Task">
                                 {% endif %}
                             </div>                           
-
+                            
                             <div class="col"> 
                                 <select class="selectpicker form-control" name="priority" title="{{item.priority}}" aria-placeholder="{{item.priority}}">
                                     <option value="aHIGH">High</option>
@@ -114,8 +112,12 @@
                             </div>
                           
                         </div>
-                
-                
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" name="tag" class="form-control" placeholder="Add tags with comma seperated">
+                            </div>
+                        </div>
                     </form>
                    
                 </div>

@@ -37,11 +37,7 @@ def read_items():
 def update_tag(item_id,tags):
     tags_list=tags.strip().split(",")
     tags_list=[tag.strip().replace(" ","_") for tag in tags_list]
-    for tag in tags:
-        if tag in tag_db.keys():
-            tag_db.get(tag)=tag_db.get('').append(item_id)
-        else:
-            tag_db[tag]=[item_id]
+    tag_db[item_id]=tags_list
 
 def update_item(item_id, text, done,priority,tag):
     update_tag(item_id,tag)
