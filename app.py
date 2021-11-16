@@ -16,6 +16,7 @@ class Priority(enum.Enum):
     aHIGH = 0
     bMEDIAN = 1
     cLOW = 2
+tag_db={}
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -23,7 +24,7 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-    #tags = db.Column(db.ARRAY(db.Text))
+    tag = db.Column(db.Text)
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
     db.session.add(item)
@@ -32,12 +33,23 @@ def create_item(text, priority):
     
 def read_items():
     return db.session.query(Item).order_by(Item.priority).all()
-    
-def update_item(item_id, text, done,priority):
+
+def update_tag(item_id,tags):
+    tags_list=tags.strip().split(",")
+    tags_list=[tag.strip().replace(" ","_") for tag in tags_list]
+    for tag in tags:
+        if tag in tag_db.keys():
+            tag_db.get(tag)=tag_db.get('').append(item_id)
+        else:
+            tag_db[tag]=[item_id]
+
+def update_item(item_id, text, done,priority,tag):
+    update_tag(item_id,tag)
     db.session.query(Item).filter_by(id = item_id).update({
 		"text": text,
         "done": True if done=="1" else False,
-        "priority": priority
+        "priority": priority,
+        "tag": tag
 	})
     db.session.commit()
 
@@ -60,14 +72,12 @@ def about():
 @app.route("/edit/<item_id>", methods = ["POST", "GET"])
 def edit_item(item_id):
     if request.method == "POST":
-        update_item(item_id, text=request.form['text'], done=request.form.get('done'),priority=request.form.get('priority'))
+        update_item(item_id, text=request.form['text'], done=request.form.get('done')
+        ,priority=request.form.get('priority'),tag=request.form.get('tag'))
  
     return redirect("/", code=302)
 
-@app.route("/tag/<item_id>", methods = ["POST", "GET"])
-def add_tag(item_id):
-    if request.method == "POST":
-        return redirect("/", code=302)
+
 
 @app.route("/delete/<item_id>", methods = ["POST", "GET"])
 def delete(item_id):
