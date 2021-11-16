@@ -24,8 +24,8 @@ class Item(db.Model):
     priority = db.Column(db.Enum(Priority))
     done = db.Column(db.Boolean,default=False)
     dateTime = db.Column(db.Text, default= datetime.now().strftime("%m/%d/%Y, %H:%M"))
-    tag = db.Column(db.Text)
-    
+    tag = db.Column(db.Text,default="")
+
 def create_item(text, priority):
     item = Item(text = text, priority = priority)
     db.session.add(item)
